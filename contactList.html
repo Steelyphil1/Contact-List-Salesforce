@@ -1,0 +1,22 @@
+<template>
+    <template if:true={contacts.data}>
+        <!--Lightning Card instead of Lightning-Layout to get background-->
+        <lightning-card title="Contacts" icon-name="custom:custom15">
+            <!--using slds-list_horizontal and a wrap so not vertical-->
+            <div class="slds-list_horizontal slds-wrap">
+                <!--Iterated through contacts for the account-->
+                <template for:each={contacts.data} for:item="contact">
+                    <!--create a picture, with each contact info-->
+                    <a href="#" key={contact.Id} data-contact-id={contact.Id} onclick={handleSelect}>  
+                        <lightning-layout-item padding="horizontal-medium">
+                            <img src={contact.Picture__c} alt="Profile photo" />
+                        </lightning-layout-item>
+                        <lightning-layout-item padding="horizontal-medium">
+                            <p>{contact.Name}</p>
+                        </lightning-layout-item>    
+                    </a>
+                </template>
+            </div>
+        </lightning-card>
+    </template>
+</template>
